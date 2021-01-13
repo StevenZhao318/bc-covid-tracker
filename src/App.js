@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Cards, Chart, CountryPicker } from "./components";
+import { Cards, Chart, RegionPicker } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
 
 class App extends React.Component {
   state = {
     data: {},
-    country: "",
+    region: "",
   };
 
   async componentDidMount() {
@@ -16,19 +16,19 @@ class App extends React.Component {
     this.setState({ data });
   }
 
-  handleCountryChange = async (country) => {
-    const data = await fetchData(country);
-    this.setState({ data, country: country });
+  handleRegionChange = async (region) => {
+    const data = await fetchData(region);
+    this.setState({ data, region: region });
   };
 
   render() {
-    const { data, country } = this.state;
+    const { data, region } = this.state;
 
     return (
       <div className={styles.container}>
         <Cards data={data} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <Chart data={data} country={country} />
+        <RegionPicker handleRegionChange={this.handleRegionChange} />
+        <Chart data={data} region={region} />
       </div>
     );
   }
