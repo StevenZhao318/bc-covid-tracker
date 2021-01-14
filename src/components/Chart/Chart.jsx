@@ -18,6 +18,8 @@ const Chart = ({ data: { newCases, activeCases, totalDeaths }, country }) => {
     fetchAPI();
   }, []);
 
+  // console.log(dailyData);
+
   const lineChart = (
     <Line
       data={{
@@ -28,7 +30,7 @@ const Chart = ({ data: { newCases, activeCases, totalDeaths }, country }) => {
         datasets: [
           {
             data: dailyData.map((data) => data.activeCases),
-            label: "Infected",
+            label: "Active Infected",
             borderColor: "#3333ff",
             fill: true,
           },

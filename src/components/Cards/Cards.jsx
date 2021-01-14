@@ -51,8 +51,16 @@ const Cards = ({
               Active Cases
             </Typography>
             <Typography variant="h5">
-              {" "}
-              <CountUp start={0} end={activeCases} duration={1} seperator="," />
+              {activeCases ? (
+                <CountUp
+                  start={0}
+                  end={activeCases}
+                  duration={1}
+                  seperator=","
+                />
+              ) : (
+                "N/A"
+              )}
             </Typography>
             <Typography color="textSecondary">{date}</Typography>
             <Typography variant="body2">Active cases of COVID-19</Typography>
@@ -67,14 +75,14 @@ const Cards = ({
         >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
-              Deaths
+              Total Deaths
             </Typography>
             <Typography variant="h5">
               {" "}
               <CountUp start={0} end={totalDeaths} duration={1} seperator="," />
             </Typography>
             <Typography color="textSecondary">{date}</Typography>
-            <Typography variant="body2">Deaths from of COVID-19</Typography>
+            <Typography variant="body2">Deaths from COVID-19</Typography>
           </CardContent>
         </Grid>
       </Grid>

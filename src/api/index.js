@@ -3,22 +3,20 @@ import axios from "axios";
 const urlOld = "https://covid19.mathdro.id/api";
 const url = "https://api.opencovid.ca/summary?loc=";
 
-export const fetchData = async (country) => {
-  let changeableUrl = `${url}canada`;
+export const fetchData = async (region) => {
+  let changeableUrl = `${url}BC`;
 
-  if (country) {
-    changeableUrl = `${url}${country}`;
+  if (region) {
+    changeableUrl = `${url}${region}`;
   }
-  console.log(changeableUrl);
+  console.log("fetching data from" + changeableUrl);
   try {
     const { data } = await axios.get(changeableUrl);
     const dataSummary = data.summary[0];
 
     const modifiedData = {
       newCases: dataSummary.cases,
-      activeCases: dataSummary.active_cases
-        ? dataSummary.active_cases
-        : 0,
+      activeCases: dataSummary.active_cases ? dataSummary.active_cases : 0,
       totalDeaths: dataSummary.cumulative_deaths,
       lastUpdate: dataSummary.date,
     };

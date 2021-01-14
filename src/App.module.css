@@ -8,3 +8,9 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+
+.regionSelector {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}

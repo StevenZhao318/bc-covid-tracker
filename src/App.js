@@ -3,6 +3,7 @@ import React from "react";
 import { Cards, Chart, RegionPicker } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
+import { Typography } from "@material-ui/core";
 
 class App extends React.Component {
   state = {
@@ -26,8 +27,8 @@ class App extends React.Component {
 
     return (
       <div className={styles.container}>
-        <Cards data={data} />
         <RegionPicker handleRegionChange={this.handleRegionChange} />
+        <Cards data={data} />
         <Chart data={data} region={region} />
       </div>
     );
